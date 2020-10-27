@@ -1,0 +1,139 @@
+/* TEXT */
+
+/* Responsive to theme */
+
+.app-text-1 {
+  color: var(--app-text-1);
+}
+
+.app-text-2 {
+  color: var(--app-text-2);
+}
+
+.app-text-3 {
+  color: var(--app-text-3);
+}
+
+.app-text-4 {
+  color: var(--app-text-4);
+}
+
+.app-text-brand {
+  color: var(--app-text-brand);
+}
+
+.app-text-opposite {
+  color: var(--app-text-opposite);
+}
+
+/* Always dark */
+
+.app-text-1-dark {
+  color: var(--app-text-1-dark);
+}
+
+.app-text-2-dark {
+  color: var(--app-text-2-dark);
+}
+
+.app-text-3-dark {
+  color: var(--app-text-3-dark);
+}
+
+.app-text-4-dark {
+  color: var(--app-text-4-dark);
+}
+
+.app-text-brand-dark {
+  color: var(--app-text-brand-dark);
+}
+
+.app-text-opposite-dark {
+  color: var(--app-text-opposite-dark);
+}
+
+
+/* BG */
+
+/* Responsive to theme */
+
+.app-bg-1 {
+  background-color: var(--app-bg-1);
+}
+
+.app-bg-2 {
+  background-color: var(--app-bg-2);
+}
+
+.app-bg-25 {
+  background-color: var(--app-bg-25);
+}
+
+.app-bg-3 {
+  background-color: var(--app-bg-3);
+}
+
+.app-bg-brand {
+  color: var(--app-bg-brand);
+}
+
+.app-bg-opposite {
+  color: var(--app-bg-opposite);
+}
+
+/* Always dark */
+
+.app-bg-1-dark {
+  background-color: var(--app-bg-1-dark);
+}
+
+.app-bg-2-dark {
+  background-color: var(--app-bg-2-dark);
+}
+
+.app-bg-25-dark {
+  background-color: var(--app-bg-25-dark);
+}
+
+.app-bg-3-dark {
+  background-color: var(--app-bg-3-dark);
+}
+
+.app-bg-brand-dark {
+  color: var(--app-bg-brand-dark);
+}
+
+.app-bg-opposite-dark {
+  color: var(--app-bg-opposite-dark);
+}
+
+
+/* BORDER */
+
+/* Responsive to theme */
+
+.app-border-1 {
+  border-color: var(--app-border-1);
+}
+
+.app-border-2 {
+  border-color: var(--app-border-2);
+}
+
+.app-border-3 {
+  border-color: var(--app-border-3);
+}
+
+/* Always dark */
+
+.app-border-1-dark {
+  border-color: var(--app-border-1-dark);
+}
+
+.app-border-2-dark {
+  border-color: var(--app-border-2-dark);
+}
+
+.app-border-3-dark {
+  border-color: var(--app-border-3-dark);
+}
