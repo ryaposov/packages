@@ -11,7 +11,7 @@ export const arrayIntToStrings = (...args) => [...args].reduce((a, b) => {
 }, [])
 
 
-const allowedColors = arrayIntToStrings(1, 2, 3, 4, 'brand')
+const allowedColors = arrayIntToStrings(1, 2, 3, 4, 'brand', false)
 
 export default (
   { tag, display, weight, leading },
@@ -56,6 +56,11 @@ export default (
       default: 1,
       validator: arrayPropValidator(allowedColors)
     },
+    hoverColor: {
+      type: [String, Number, Array, Boolean],
+      default: false,
+      validator: arrayPropValidator(allowedColors)
+    },
     to: {
       type: [Object, Boolean],
       default: false
@@ -76,12 +81,22 @@ export default (
           inline: ['app-inline']
         }[this.$responsiveProp('display')],
         ...{
-          1: ['app-text-1'],
-          2: ['app-text-2'],
-          3: ['app-text-3'],
-          4: ['app-text-4'],
-          brand: ['app-text-brand']
+          1: ['app-color-text-1'],
+          2: ['app-color-text-2'],
+          3: ['app-color-text-3'],
+          4: ['app-color-text-4'],
+          brand: ['app-color-text-brand'],
+          opposite: ['app-color-text-opposite']
         }[this.$responsiveProp('color')],
+        ...{
+          false: [],
+          1: ['hover:app-color-text-1'],
+          2: ['hover:app-color-text-2'],
+          3: ['hover:app-color-text-3'],
+          4: ['hover:app-color-text-4'],
+          brand: ['hover:app-color-text-brand'],
+          opposite: ['hover:app-color-text-opposite']
+        }[this.$responsiveProp('hoverColor')],
       ]
     }
   },

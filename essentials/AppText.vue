@@ -1,9 +1,25 @@
-<template src="./vueTypographyTemplate.vue" />
+<template>
+  <component
+    :is="$responsiveProp('tag')"
+    :class="rootClasses"
+    :data-name="$NAME"
+    v-bind="$rootProps"
+  >
+    <span
+      v-if="html"
+      class="app-br"
+      v-html="$responsiveProp('html')"
+    />
+    <slot v-else>
+      {{ $responsiveProp('text') }}
+    </slot>
+  </component>
+</template>
 
 <script>
 import vueTypographyMixin, { arrayIntToStrings } from './vueTypographyMixin.js'
 
-const allowedTags = ['span', 'p', 'i', 'strong', 'NuxtLink', 'div']
+const allowedTags = ['span', 'p', 'i', 'strong', 'label', 'NuxtLink', 'div']
 const allowedWeights = ['bold', 'semibold', 'medium', 'regular']
 const allowedSizes = arrayIntToStrings(20, 18, 16, 14)
 const allowedLeading = ['regular', 'compact']
@@ -44,7 +60,7 @@ export default {
             regular: ['app-text-14', 'app-leading-20'],
             compact: ['app-text-14', 'app-leading-16'],
           }
-        }[this.$responsiveProp('size')][this.$responsiveProp('leading')]
+        }[this.$responsiveProp('size')][this.$responsiveProp('leading')],
       ]
     }
   },
