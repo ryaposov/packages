@@ -16,7 +16,7 @@
 
 <script>
   import { arrayPropValidator, arrayIntToStrings } from './vueTypographyMixin.js'
-  const allowedColors = arrayIntToStrings(1, 2, 3, 4, 'brand', false)
+  const allowedColors = arrayIntToStrings(1, 2, 3, 4, 'brand', 'opposite', false)
 
   export default {
     name: 'AppIcon',
@@ -26,7 +26,7 @@
         default: ''
       },
       size: {
-        type: [String, Boolean],
+        type: [String, Number, Boolean],
         default: false
       },
       width: {
@@ -38,7 +38,7 @@
         default: false
       },
       color: {
-        type: [String, Number, Array],
+        type: [String, Number, Array, Boolean],
         default: 1,
         validator: arrayPropValidator(allowedColors)
       },
@@ -57,7 +57,8 @@
             3: ['app-color-text-3'],
             4: ['app-color-text-4'],
             brand: ['app-color-text-brand'],
-            opposite: ['app-color-text-opposite']
+            opposite: ['app-color-text-opposite'],
+            false: []
           }[this.$responsiveProp('color')],
           ...{
             false: [],

@@ -14,6 +14,14 @@
   }
 }
 
+@each $textColor, $i in 1, 2, 3, 4, brand, opposite {
+  .app-group:hover {
+    .group-hover\:app-color-text-$(textColor) {
+      color: var(--app-text-$(textColor));
+    }
+  }
+}
+
 /* Always dark */
 
 @each $textColor, $i in 1, 2, 3, 4, brand, opposite {
@@ -52,24 +60,24 @@
 
 /* Responsive to theme */
 
-@each $borderColor, $i in 1, 2, 3, 4, brand {
+@each $borderColor, $i in 1, 2, 3, 4, brand, opposite, transparent {
   .app-color-border-$(borderColor) {
     border-color: var(--app-border-$(borderColor));
   }
 }
-@each $borderColor, $i in 1, 2, 3, 4, brand {
+@each $borderColor, $i in 1, 2, 3, 4, brand, opposite, transparent {
   .hover\:app-color-border-$(borderColor):hover {
     border-color: var(--app-border-$(borderColor));
   }
 }
 
-@each $borderColor, $i in 1, 2, 3, 4, brand {
+@each $borderColor, $i in 1, 2, 3, 4, brand, opposite, transparent {
   .focus\:app-color-border-$(borderColor):focus {
     border-color: var(--app-border-$(borderColor));
   }
 }
 
-@each $borderColor, $i in 1, 2, 3, 4, brand {
+@each $borderColor, $i in 1, 2, 3, 4, brand, opposite, transparent {
   .app-group:hover {
     .group-hover\:app-color-border-$(borderColor) {
       border-color: var(--app-border-$(borderColor));

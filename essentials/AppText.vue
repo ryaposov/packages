@@ -21,7 +21,7 @@ import vueTypographyMixin, { arrayIntToStrings } from './vueTypographyMixin.js'
 
 const allowedTags = ['span', 'p', 'i', 'strong', 'label', 'NuxtLink', 'div']
 const allowedWeights = ['bold', 'semibold', 'medium', 'regular']
-const allowedSizes = arrayIntToStrings(20, 18, 16, 14)
+const allowedSizes = arrayIntToStrings(20, 18, 16, 14, 12)
 const allowedLeading = ['regular', 'compact']
 
 export default {
@@ -59,6 +59,10 @@ export default {
           14: {
             regular: ['app-text-14', 'app-leading-20'],
             compact: ['app-text-14', 'app-leading-16'],
+          },
+          12: {
+            regular: ['app-text-12', 'app-leading-16'],
+            compact: ['app-text-12', 'app-leading-14'],
           }
         }[this.$responsiveProp('size')][this.$responsiveProp('leading')],
       ]

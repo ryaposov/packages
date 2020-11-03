@@ -66,6 +66,8 @@ const spacing = {
   196: '196px',
   200: '200px',
   220: '220px',
+  260: '260px',
+  280: '280px',
   320: '320px',
   340: '340px',
   360: '360px',
@@ -150,7 +152,8 @@ module.exports = {
       20: '20px',
       18: '18px',
       16: '16px',
-      14: '14px'
+      14: '14px',
+      12: '12px'
     },
     lineHeight: {
       60: '60px',
@@ -165,6 +168,7 @@ module.exports = {
       24: '24px',
       20: '20px',
       16: '16px',
+      14: '14px',
     },
     minWidth: {
       ...spacing,
@@ -191,6 +195,7 @@ module.exports = {
     },
     borderRadius: {
       2: '2px',
+      3: '3px',
       4: '4px',
       8: '8px',
       16: '16px',
@@ -198,6 +203,22 @@ module.exports = {
       full: '100%'
     },
     extend: {
+      opacity: {
+        '10': '.1',
+        '20': '.2',
+        '30': '.3',
+        '40': '.4',
+        '50': '.5',
+        '60': '.6',
+        '70': '.7',
+        '80': '.8',
+        '90': '.9',
+        '100': '1',
+      },
+      scale: {
+        '25': '.25',
+        '75': '.75'
+      },
       height: {
         ...vh,
         ...vw
@@ -265,6 +286,9 @@ module.exports = {
     'alignContent',
     'alignItems',
     'alignSelf',
+
+    // Grid
+    'gridAutoFlow',
     
     // transition classes
     'transitionProperty',
@@ -283,7 +307,8 @@ module.exports = {
     margin: ['responsive', 'last', 'first', 'odd', 'even'],
     padding: ['responsive', 'last', 'first', 'odd', 'even'],
     opacity: ['responsive', 'hover', 'focus', 'group-hover'],
-    display: ['responsive', 'last', 'first', 'odd', 'even']
+    display: ['responsive', 'last', 'first', 'odd', 'even'],
+    border: ['responsive', 'last', 'first']
   },
   plugins: []
 }

@@ -4,7 +4,6 @@
     :class="rootClasses"
     :data-name="$NAME"
     :to="to"
-    class="app-flex"
   >
     <slot />
   </component>
@@ -19,6 +18,11 @@ export default {
     tag: {
       type: String,
       default: 'div'
+    },
+    type: {
+      type: [String, Array],
+      default: 'flex',
+      validator: val => arrayPropValidator(['row', 'inline'])
     },
     direction: {
       type: [String, Array],
@@ -53,6 +57,10 @@ export default {
   computed: {
     rootClasses () {
       return [
+        ...{
+          flex: ['app-flex'],
+          inline: ['app-inline-flex']
+        }[this.$RESPONSIVE_PROP('type')],
         ...{
           row: ['app-flex-row'],
           col: ['app-flex-col']

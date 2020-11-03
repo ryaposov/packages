@@ -1,55 +1,52 @@
 <template>
-  <div
+  <AppStack
+    direction="col"
+    :align="responsive ? 'stretch' : 'start'"
     :data-name="$NAME"
     :class="rootClasses"
+    class="app-relative"
   >
-    <textarea
-      v-if="isTextarea"
+    <component
+      :is="component"
       ref="input"
       v-bind="componentProps"
       :class="componentClasses"
-      class="app-border app-color-border-2 app-rounded-4 app-h-36 app-px-16
-        app-text-14 app-leading-20 app-color-text-1"
-      @change="$emit('change', $event.target.value)"
-      @input="$emit('input', $event.target.value)"
-      @focusout="$emit('focusout', $event.target.value)"
-      @focusin="$emit('focusin', $event.target.value)"
-      @keyup="$emit('keyup', $event.target.value)"
-    />
-    <input
-      v-else
-      ref="input"
-      v-bind="componentProps"
-      :class="componentClasses"
-      spellcheck="false"
-      class="app-border app-color-border-2 app-rounded-4 app-h-36 app-px-16
-        app-text-14 app-leading-16 app-color-text-1 app-outline-none
-        app-transition-colors app-duration-150 app-ease-in-out
-        hover:app-color-border-4 focus:app-color-border-brand focus:app-shadow-input focus:app-shadow"
-      @change="$emit('change', $event.target.value)"
-      @input="$emit('input', $event.target.value)"
-      @focusout="$emit('focusout', $event.target.value)"
-      @focusin="$emit('focusin', $event.target.value)"
-      @keyup="$emit('keyup', $event.target.value)"
+      v-on="listeners"
     >
-    <div v-if="icon || $slots.after">
+      <template v-if="component === 'select'">
+        <option
+          v-for="option in options"
+          :key="option.value"
+          :selected="option.selected"
+          :value="option.value"
+          :disabled="option.disabled"
+          :hidden="option.hidden"
+          v-text="option.text"
+        />
+      </template>
+    </component>
+    <div
+      v-if="icon || $slots.after || tag == 'select'"
+      :class="iconClasses"
+    >
       <slot name="after">
         <AppIcon
-          v-if="icon"
-          :icon="icon"
-          size="20"
+          v-if="icon || tag == 'select'"
+          v-bind="iconProps"
         />
       </slot>
     </div>
-  </div>
+  </AppStack>
 </template>
 
 <script>
+  import AppStack from './AppStack.vue'
   import AppIcon from './AppIcon.vue'
 
   export default {
     name: 'AppInput',
     components: {
+      AppStack,
       AppIcon
     },
     inject: {
@@ -85,6 +82,14 @@
         default: null
       },
       /**
+       * HTML tag to render
+       */
+      tag: {
+        type: String,
+        default: 'input',
+        validator: val => ['input', 'textarea', 'select'].includes(val)
+      },
+      /**
        * HTML [type] attribute of AppInput
        */
       type: {
@@ -105,37 +110,81 @@
       icon: {
         type: String,
         default: ''
+      },
+      options: {
+        type: Array,
+        default: () => ([])
       }
     },
-    emits: ['input', 'change'],
+    emits: ['input', 'change', 'focusout', 'focusin', 'keyup'],
     computed: {
+      component () {
+        return this.tag
+      },
       rootClasses () {
         return {}
       },
       componentClasses () {
-        return {}
+        return [
+          'app-border', 'app-color-border-2', 'app-rounded-4', 'app-appearance-none',
+          'app-h-36', 'app-px-16', 'app-text-14', 'app-leading-16', 'app-color-bg-1',
+          'app-color-text-1', 'app-outline-none', 'app-transition-colors',
+          'app-duration-150', 'app-ease-in-out', 'hover:app-color-border-4',
+          'focus:app-color-border-brand', 'focus:app-shadow-input', 'focus:app-shadow'
+        ]
       },
       componentProps () {
+        const props = {
+          ...(this.tag === 'select' || this.responsive) ? {} : {
+            size: 30,
+          },
+          ...(this.tag === 'select') ? {} : {
+            type: this.type,
+            value: this.value
+          }
+        }
+
         return {
-          value: this.value,
           id: this.cleanName,
           name: this.cleanName,
-          type: this.type,
           disabled: this.isDisabled,
-          size: this.responsive ? null : 30,
+          spellcheck: false,
+          ...props,
           ...this.$attrs
         }
       },
+      iconProps () {
+        return this.tag === 'select' ? {
+          icon: 'chevron-down',
+          size: 16,
+          color: 3
+        } : {
+          icon: this.select,
+          size: 20
+        }
+      },
+      iconClasses () {
+        return this.tag === 'select' ? [
+          'app-absolute', 'app-top-1/2', 'app-right-12',
+          'app-transform', 'app--translate-y-1/2'
+        ] : []
+      },
       cleanName () {
         return this.$AppFormItem ? this.$AppFormItem.prop : this.name
-      },
-      isTextarea () {
-        return this.type === 'textarea'
       },
       isDisabled () {
         return this.disabled || (this.$AppFormItem ?
           this.$AppFormItem.isDisabled
         : this.disabled)
+      },
+      listeners () {
+        return {
+          change: $event => this.$emit('change', $event.target.value),
+          input: $event => this.$emit('input', $event.target.value),
+          focusout: $event => this.$emit('focusout', $event.target.value),
+          focusin: $event => this.$emit('focusin', $event.target.value),
+          keyup: $event => this.$emit('keyup', $event.target.value)
+        }
       }
     }
   }

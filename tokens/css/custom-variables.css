@@ -41,6 +41,8 @@
   --app-border-3-light: hsla(0, 0%, 71%, 1);
   --app-border-4-light: hsla(0, 0%, 55.3%, 1);
   --app-border-brand-light: hsla(212, 100%, 50%, 1);
+  --app-border-opposite-light: hsla(0, 0, 0, 1);
+  --app-border-transparent-light: transparent;
 
   /* Border Dark */
   --app-border-1-dark: hsla(0, 0%, 12.5%, 1);
@@ -48,6 +50,8 @@
   --app-border-3-dark: hsla(0, 0%, 29.4%, 1);
   --app-border-4-dark: hsla(0, 0%, 21.6%, 1);
   --app-border-brand-dark: hsla(212, 100%, 55.9%, 1);
+  --app-border-opposite-dark: hsla(0, 0, 100%, 1);
+  --app-border-transparent-dark: transparent;
   
   
   @media (--light) {
@@ -73,6 +77,8 @@
     --app-border-3: var(--app-border-3-light);
     --app-border-4: var(--app-border-4-light);
     --app-border-brand: var(--app-border-brand-light);
+    --app-border-opposite: var(--app-border-opposite-light);
+    --app-border-transparent: var(--app-border-transparent-light);
   }
 
   @media (--dark) {
@@ -98,5 +104,7 @@
     --app-border-3: var(--app-border-3-dark);
     --app-border-4: var(--app-border-4-dark);
     --app-border-brand: var(--app-border-brand-dark);
+    --app-border-opposite: var(--app-border-opposite-dark);
+    --app-border-transparent: var(--app-border-transparent-dark);
   }
 }

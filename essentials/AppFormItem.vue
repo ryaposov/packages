@@ -21,6 +21,7 @@
       <slot />
     </AppStack>
     <AppStack
+      v-if="validation"
       ref="messages"
       direction="col"
       :style="messagesStyles"
@@ -86,6 +87,13 @@
       label: {
         type: String,
         default: ''
+      },
+      /**
+       * Sets the disabled state of AppInput
+       */
+      disabled: {
+        type: Boolean,
+        default: false
       },
       /**
        * An id to link label to input with [for]

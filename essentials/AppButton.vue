@@ -5,47 +5,66 @@
     :data-name="$NAME"
     v-bind="rootProps"
     direction="row"
+    type="inline"
     align="center"
-    class="app-cursor-pointer app-select-none app-group app-py-12
-      app-transition-opacity app-duration-100"
+    class="app-relative app-cursor-pointer app-select-none app-group focus:app-outline-none
+      app-transition app-duration-150 app-ease-in-out hover:app-opacity-50"
   >
     <component
       :is="textTag"
+      v-if="text"
       :color="color"
       :size="size"
       :weight="weight"
-      leading="compact"
-      class="app-relative"
+      :hover-color="hoverColor"
+      leading="regular"
+      class="app-relative app-top-1"
     >
       <span v-text="text" />
       <AppBorder
         v-if="type === 'underlined'"
-        class="app-absolute app--bottom-4 app-left-0 app-w-full group-hover:app-opacity-0"
+        :class="underlineClasses"
+        class="app-absolute app--bottom-4 app-left-0 app-w-full"
       />
     </component>
+    <AppIcon
+      v-if="icon"
+      v-bind="iconProps"
+      :class="iconClasses"
+      class="app-relative app--top-1"
+    />
+    <div
+      :class="borderClasses"
+      class="app-pointer-events-none app-absolute app-left-0 app-top-0 app-w-full app-h-full app-border
+        app-transition app-duration-150 app-ease-in-out"
+    />
   </AppStack>
 </template>
 
 <script>
 import AppStack from './AppStack.vue'
-import AppText from '@ryaposov/essentials/AppText.vue'
-import AppHeading from '@ryaposov/essentials/AppHeading.vue'
+import AppText from './AppText.vue'
+import AppIcon from './AppIcon.vue'
+import AppHeading from './AppHeading.vue'
 import AppBorder from './AppBorder.vue'
 
 import { arrayIntToStrings, arrayPropValidator } from './vueTypographyMixin.js'
 
 const allowedTypes = ['text', 'framed', 'underlined', 'bordered']
 const allowedWeights = ['extrabold', 'bold', 'semibold', 'medium', 'regular']
+const allowedDensity = ['tight', 'normal', 'spaced', 'relaxed']
 const allowedSizes = arrayIntToStrings(48, 36, 32, 24, 28, 20, 18, 16, 14)
-const allowedColors = arrayIntToStrings(1, 2, 3, 4, 'brand')
-const allowedBg = arrayIntToStrings(1, 2, 3, 'brand')
-const allowedRounded = arrayIntToStrings(0, 4, 8, 16, 24, 32, 40, 48, 56, 'full')
+const allowedColors = arrayIntToStrings(1, 2, 3, 4, 'brand', 'opposite', false)
+const allowedBg = arrayIntToStrings(1, 2, 25, 3, 'brand', 'opposite', false)
+const allowedBorder = arrayIntToStrings(1, 2, 3, 4, 'opposite', 'brand', false)
+const allowedRounded = arrayIntToStrings(0, 2, 3, 4, 8, 16, 24, 32, 40, 48, 56, 'full')
 
 export default {
   name: 'AppButton',
   components: {
     AppStack,
     AppText,
+    AppIcon,
     AppHeading,
     AppBorder
   },
@@ -63,9 +82,15 @@ export default {
       default: 'medium',
       validator: val => allowedWeights.includes(val)
     },
+    density: {
+      type: [String, Array],
+      default: 'normal',
+      validator: arrayPropValidator(allowedDensity)
+    },
     size: {
       type: [String, Number, Array],
       required: true,
+      default: 14,
       validator: arrayPropValidator(allowedSizes)
     },
     color: {
@@ -73,9 +98,33 @@ export default {
       default: 1,
       validator: arrayPropValidator(allowedColors)
     },
+    hoverColor: {
+      type: [String, Number, Array, Boolean],
+      default: false,
+      validator: arrayPropValidator(allowedColors)
+    },
+    underline: {
+      type: [String, Number, Array, Boolean],
+      default: false,
+      validator: arrayPropValidator(allowedBorder)
+    },
+    underlineWidth: {
+      type: [String, Number, Array],
+      default: 1
+    },
+    border: {
+      type: [String, Number, Array, Boolean],
+      default: false,
+      validator: arrayPropValidator(allowedBorder)
+    },
     bg: {
       type: [String, Number, Array],
       default: 1,
+      validator: arrayPropValidator(allowedBg)
+    },
+    hoverBg: {
+      type: [String, Number, Array, Boolean],
+      default: false,
       validator: arrayPropValidator(allowedBg)
     },
     type: {
@@ -87,6 +136,10 @@ export default {
       type: [String, Number, Array],
       default: 0,
       validator: val => allowedRounded.includes(val)
+    },
+    icon: {
+      type: [String, Array, Boolean],
+      default: false
     },
     href: {
       type: String,
@@ -104,56 +157,94 @@ export default {
   computed: {
     rootClasses () {
       return [
+        ...this.radiusClasses,
         ...{
           1: ['app-color-bg-1'],
           2: ['app-color-bg-2'],
           25: ['app-color-bg-25'],
           3: ['app-color-bg-3'],
           brand: ['app-color-bg-brand'],
-          opposite: ['app-color-bg-opposite']
+          opposite: ['app-color-bg-opposite'],
         }[this.responsiveProp('bg')],
         ...{
-          text: [],
-          framed: ['app-px-16', 'app-py-4', 'md:app-py-8', 'md:app-px-28', 'hover:app-opacity-75'],
-          underlined: [],
-          bordered: []
-        }[this.responsiveProp('type')],
+          true: [
+            ...{
+              tight: [],
+              normal: ['app-px-12', 'app-py-4'],
+              spaced: [],
+              relaxed: []
+            }[this.density],
+            ...{
+              1: ['app-color-bg-1'],
+              2: ['app-color-bg-2'],
+              25: ['app-color-bg-25'],
+              3: ['app-color-bg-3'],
+              brand: ['app-color-bg-brand'],
+              opposite: ['app-color-bg-opposite']
+            }[this.bg]
+          ],
+          false: []
+        }[this.responsiveProp('type') === 'framed'],
+      ]
+    },
+    borderClasses () {
+      return [
+        ...this.radiusClasses,
+        ...{
+          1: ['app-color-border-1'],
+          2: ['app-color-border-2'],
+          3: ['app-color-border-3'],
+          4: ['app-color-border-4'],
+          brand: ['app-color-border-brand'],
+          opposite: ['app-color-border-opposite'],
+          false: ['app-color-border-transparent'],
+        }[this.responsiveProp('border')],
+      ]
+    },
+    radiusClasses () {
+      return [
         ...{
           0: [],
+          2: ['app-rounded-2'],
+          3: ['app-rounded-3'],
           4: ['app-rounded-4'],
           8: ['app-rounded-8'],
           16: ['app-rounded-16'],
           32: ['app-rounded-32'],
           full: ['app-rounded-full']
         }[this.responsiveProp('rounded')],
+      ]
+    },
+    iconClasses () {
+      return [
         ...{
-          framed: {
-            1: ['app-color-bg-1'],
-            2: ['app-color-bg-2'],
-            25: ['app-color-bg-25'],
-            3: ['app-color-bg-3'],
-            brand: ['app-color-bg-brand'],
-            opposite: ['app-color-bg-opposite']
-          },
-          text: {
-            1: [],
-            2: [],
-            3: [],
-            brand: []
-          },
-          underlined: {
-            1: [],
-            2: [],
-            3: [],
-            brand: []
-          },
-          bordered: {
-            1: [],
-            2: [],
-            3: [],
-            brand: []
-          },
-        }[this.responsiveProp('type')][this.bg],
+          true: [
+            ...{
+              tight: [],
+              normal: ['app-ml-4'],
+              spaced: [],
+              relaxed: []
+            }[this.density]
+          ],
+          false: []
+        }[Boolean(this.responsiveProp('type') === 'framed' && this.text)],
+      ]
+    },
+    underlineClasses () {
+      return [
+        ...{
+          1: ['app-color-border-1'],
+          2: ['app-color-border-2'],
+          3: ['app-color-border-3'],
+          opposite: ['app-color-border-opposite'],
+          brand: ['app-color-border-brand'],
+          false: []
+        }[this.responsiveProp('underline')],
+        ...{
+          1: ['app-border-t-1'],
+          2: ['app-border-t-2'],
+          3: ['app-border-t-3']
+        }[this.responsiveProp('underlineWidth')]
       ]
     },
     rootProps () {
@@ -162,6 +253,13 @@ export default {
       return {
         ...href ? { href } : {},
         ...to ? { to } : {}
+      }
+    },
+    iconProps () {
+      return {
+        icon: this.icon,
+        size: (parseInt(this.responsiveProp('size')) + 2) + 'px',
+        color: this.color
       }
     }
   },

@@ -11,7 +11,7 @@ export const arrayIntToStrings = (...args) => [...args].reduce((a, b) => {
 }, [])
 
 
-const allowedColors = arrayIntToStrings(1, 2, 3, 4, 'brand', false)
+const allowedColors = arrayIntToStrings(1, 2, 3, 4, 'brand', 'opposite', false)
 
 export default (
   { tag, display, weight, leading },
