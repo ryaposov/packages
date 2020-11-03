@@ -112,6 +112,10 @@ module.exports = {
     },
     colors: {},
     inset: {
+      '1/4': '25%',
+      '1/2': '50%',
+      '3/4': '75%',
+      'full': '100%',
       ...spacing,
       ...negativeSpacing
     },
@@ -151,7 +155,8 @@ module.exports = {
       32: '32px',
       28: '28px',
       24: '24px',
-      20: '20px'
+      20: '20px',
+      16: '16px',
     },
     minWidth: {
       ...spacing,
@@ -177,6 +182,7 @@ module.exports = {
       '1/2': '50%'
     },
     borderRadius: {
+      2: '2px',
       4: '4px',
       8: '8px',
       16: '16px',
@@ -187,6 +193,9 @@ module.exports = {
       height: {
         ...vh,
         ...vw
+      },
+      boxShadow: {
+        input: '0px 0px 16px 0px rgba(0, 120, 255, 0.1)'
       }
     }
   },
@@ -211,6 +220,8 @@ module.exports = {
     'visibility',
     'userSelect',
     'whitespace',
+    'appearance',
+    'boxShadow',
 
     // text
     'letterSpacing',
@@ -263,7 +274,8 @@ module.exports = {
   variants: {
     margin: ['responsive', 'last', 'first', 'odd', 'even'],
     padding: ['responsive', 'last', 'first', 'odd', 'even'],
-    opacity: ['responsive', 'hover', 'focus', 'group-hover']
+    opacity: ['responsive', 'hover', 'focus', 'group-hover'],
+    display: ['responsive', 'last', 'first', 'odd', 'even']
   },
   plugins: []
 }
