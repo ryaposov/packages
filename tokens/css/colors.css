@@ -35,13 +35,13 @@
 
 /* Responsive to theme */
 
-@each $bgColor, $i in 1, 2, 25, 3, brand, opposite {
+@each $bgColor, $i in 1, 2, 25, 3, brand, opposite, transparent {
   .app-color-bg-$(bgColor) {
     background-color: var(--app-bg-$(bgColor));
   }
 }
 
-@each $bgColor, $i in 1, 2, 25, 3, brand, opposite {
+@each $bgColor, $i in 1, 2, 25, 3, brand, opposite, transparent {
   .hover\:app-color-bg-$(bgColor):hover {
     background-color: var(--app-bg-$(bgColor));
   }
@@ -49,7 +49,7 @@
 
 /* Always dark */
 
-@each $bgColor, $i in 1, 2, 25, 3, brand, opposite {
+@each $bgColor, $i in 1, 2, 25, 3, brand, opposite, transparent {
   .app-color-bg-$(bgColor)-dark {
     background-color: var(--app-bg-$(bgColor)-dark);
   }
