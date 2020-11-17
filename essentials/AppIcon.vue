@@ -26,15 +26,15 @@
         default: ''
       },
       size: {
-        type: [String, Number, Boolean],
+        type: [String, Number, Array, Boolean],
         default: false
       },
       width: {
-        type: [String, Boolean],
+        type: [String, Array, Boolean],
         default: false
       },
       height: {
-        type: [String, Boolean],
+        type: [String, Array, Boolean],
         default: false
       },
       color: {
@@ -72,9 +72,9 @@
         ]
       },
       rootStyles () {
-        return this.size || (this.width && this.height) ? {
-          width: this.size || this.width,
-          height: this.size || this.height
+        return this.$responsiveProp('size') || (this.$responsiveProp('width') && this.$responsiveProp('height')) ? {
+          width: this.$responsiveProp('size') || this.$responsiveProp('width'),
+          height: this.$responsiveProp('size') || this.$responsiveProp('height')
         } : {}
       },
       iconPath () {

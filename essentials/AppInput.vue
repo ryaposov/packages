@@ -17,7 +17,7 @@
         <option
           v-for="option in options"
           :key="option.value"
-          :selected="option.selected"
+          :selected="option.value === value"
           :value="option.value"
           :disabled="option.disabled"
           :hidden="option.hidden"
