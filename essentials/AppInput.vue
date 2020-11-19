@@ -67,10 +67,11 @@
         type: Boolean,
         default: false
       },
-      /**
-       * Sets the disabled state of AppInput
-       */
       responsive: {
+        type: Boolean,
+        default: false
+      },
+      transparent: {
         type: Boolean,
         default: false
       },
@@ -127,10 +128,10 @@
       componentClasses () {
         return [
           'app-border', 'app-color-border-2', 'app-rounded-4', 'app-appearance-none',
-          'app-h-36', 'app-px-16', 'app-text-14', 'app-leading-16', 'app-color-bg-1',
+          'app-h-36', 'app-px-16', 'app-text-14', 'app-leading-16', !this.transparent ? 'app-color-bg-1' : 'app-color-bg-transparent',
           'app-color-text-1', 'app-outline-none', 'app-transition-colors',
           'app-duration-150', 'app-ease-in-out', 'hover:app-color-border-4',
-          'focus:app-color-border-brand', 'focus:app-shadow-input', 'focus:app-shadow'
+          'focus:app-color-border-brand', 'focus:app-shadow-input', 'focus:app-shadow',
         ]
       },
       componentProps () {
