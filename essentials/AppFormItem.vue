@@ -20,6 +20,14 @@
       />
       <slot />
     </AppStack>
+    <AppText
+      v-if="message"
+      :text="message"
+      size="14"
+      weight="regular"
+      color="3"
+      class="app-mt-8"
+    />
     <AppStack
       v-if="validation"
       ref="messages"
@@ -117,6 +125,10 @@
       labelWidth: {
         type: [String, Number],
         default: 180
+      },
+      message: {
+        type: String,
+        default: ''
       },
       /**
        * Error Message
