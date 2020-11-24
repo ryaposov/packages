@@ -102,8 +102,8 @@
        */
       inputSize: {
         type: String,
-        default: 'medium',
-        validator: val => ['small', 'medium'].indexOf(val) > -1
+        default: 'md',
+        validator: val => ['sm', 'md'].indexOf(val) > -1
       },
       /**
        * Icon name displayed on the right on the input
@@ -128,10 +128,14 @@
       componentClasses () {
         return [
           'app-border', 'app-color-border-2', 'app-rounded-4', 'app-appearance-none',
-          'app-h-36', 'app-px-16', 'app-text-14', 'app-leading-16', !this.transparent ? 'app-color-bg-1' : 'app-color-bg-transparent',
+          'app-text-14', 'app-leading-16', !this.transparent ? 'app-color-bg-1' : 'app-color-bg-transparent',
           'app-color-text-1', 'app-outline-none', 'app-transition-colors',
           'app-duration-150', 'app-ease-in-out', 'hover:app-color-border-4',
           'focus:app-color-border-brand', 'focus:app-shadow-input', 'focus:app-shadow',
+          ...{
+            sm: ['app-h-28', 'app-px-12'],
+            md: ['app-h-36', 'app-px-16']
+          }[this.inputSize]
         ]
       },
       componentProps () {
