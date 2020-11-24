@@ -286,6 +286,7 @@ module.exports = {
     'transitionProperty',
     'transitionTimingFunction',
     'transitionDuration',
+    'animation',
 
     // transform classes
     'transform',
