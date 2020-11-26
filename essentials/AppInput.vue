@@ -10,6 +10,7 @@
       :is="component"
       ref="input"
       v-bind="componentProps"
+      :style="componentStyles"
       :class="componentClasses"
       v-on="listeners"
     >
@@ -105,6 +106,10 @@
         default: 'md',
         validator: val => ['sm', 'md'].indexOf(val) > -1
       },
+      rows: {
+        type: [String, Number],
+        default: 4
+      },
       /**
        * Icon name displayed on the right on the input
        */
@@ -135,16 +140,28 @@
           ...{
             sm: ['app-h-28', 'app-px-12'],
             md: ['app-h-36', 'app-px-16']
-          }[this.inputSize]
+          }[this.inputSize],
+          ...{
+            textarea: ['app-py-12', 'app-h-initial'],
+            input: [],
+            select: []
+          }[this.tag]
         ]
+      },
+      componentStyles () {
+        return this.tag === 'textarea' ? {
+          minHeight: (this.rows * 20) + 'px'
+        } : {}
       },
       componentProps () {
         const props = {
           ...(this.tag === 'select' || this.responsive) ? {} : {
             size: 30,
           },
-          ...(this.tag === 'select') ? {} : {
+          ...(this.tag === 'select' || this.tag === 'textarea') ? {} : {
             type: this.type,
+          },
+          ...(this.tag === 'select') ? {} : {
             value: this.value
           }
         }
