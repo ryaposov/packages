@@ -33,7 +33,7 @@
             >
               <AppIcon
                 :size="['20px', '28px']"
-                icon="close"
+                icon="remove"
               />
             </button>
             <slot
@@ -105,7 +105,7 @@
         return [
           ...{
             true: [
-              'app-opacity-75',
+              'app-opacity-40',
               'app-delay-0'
             ],
             false: [
