@@ -170,9 +170,9 @@ export default {
           true: [
             ...{
               tight: [],
-              normal: ['app-px-12', 'app-py-4'],
-              spaced: [],
-              relaxed: []
+              normal: ['app-px-16', 'app-py-4'],
+              spaced: ['app-px-20', 'app-py-8'],
+              relaxed: ['app-px-24', 'app-py-12'],
             }[this.density],
             ...{
               1: ['app-color-bg-1'],
