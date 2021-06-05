@@ -19,7 +19,7 @@
 <script>
 import vueTypographyMixin, { arrayIntToStrings } from './vueTypographyMixin.js'
 
-const allowedTags = ['span', 'p', 'i', 'strong', 'label', 'NuxtLink', 'div']
+const allowedTags = ['span', 'p', 'i', 'strong', 'label', 'NuxtLink', 'div', 'a']
 const allowedWeights = ['bold', 'semibold', 'medium', 'regular']
 const allowedSizes = arrayIntToStrings(20, 18, 16, 14, 12)
 const allowedLeading = ['regular', 'compact']
