@@ -84,12 +84,6 @@ const spacing = {
   1200: '1200px',
 }
 
-const negativeSpacing = Object.keys(spacing).reduce((a, b) => {
-  a['-' + b] = '-' + b + 'px'
-
-  return a
-}, {})
-
 const vh = {
   '100vh': '100vh',
   '50vh': '50vh',
@@ -118,12 +112,10 @@ module.exports = {
       '1/2': '50%',
       '3/4': '75%',
       'full': '100%',
-      ...spacing,
-      ...negativeSpacing
+      ...spacing
     },
     spacing: {
-      ...spacing,
-      ...negativeSpacing
+      ...spacing
     },
     fontFamily: {
       body: ['Catamaran', 'sans-serif'],
@@ -186,12 +178,12 @@ module.exports = {
       '1/2': '50%'
     },
     borderRadius: {
-      2: '2px',
-      3: '3px',
-      4: '4px',
-      8: '8px',
-      16: '16px',
-      32: '32px',
+      '2': '2px',
+      '3': '3px',
+      '4': '4px',
+      '8': '8px',
+      '16': '16px',
+      '32': '32px',
       full: '100%'
     },
     extend: {
@@ -219,89 +211,6 @@ module.exports = {
         input: '0px 0px 16px 0px rgba(0, 120, 255, 0.1)'
       }
     }
-  },
-  corePlugins: [
-    'preflight',
-    'cursor',
-    'display',
-    'inset',
-    'margin',
-    'objectFit',
-    'objectPosition',
-    'opacity',
-    'overflow',
-    'order',
-    'outline',
-    'pointerEvents',
-    'padding',
-    'position',
-    'verticalAlign',
-    'wordBreak',
-    'zIndex',
-    'visibility',
-    'userSelect',
-    'whitespace',
-    'appearance',
-    'boxShadow',
-
-    // text
-    'letterSpacing',
-    'textAlign',
-    'fontFamily',
-    'fontWeight',
-    'fontSize',
-    'lineHeight',
-    'textTransform',
-
-    // border
-    'borderRadius',
-    'borderWidth',
-    'borderStyle',
-    'divideWidth',
-    'divideColor',
-
-    // sizing
-    'width',
-    'height',
-    'maxWidth',
-    'maxHeight',
-    'minWidth',
-    'minHeight',
-
-    // flex
-    'flex',
-    'flexDirection',
-    'flexGrow',
-    'flexShrink',
-    'flexWrap',
-    'justifyContent',
-    'alignContent',
-    'alignItems',
-    'alignSelf',
-
-    // Grid
-    'gridAutoFlow',
-    
-    // transition classes
-    'transitionProperty',
-    'transitionTimingFunction',
-    'transitionDuration',
-    'animation',
-
-    // transform classes
-    'transform',
-    'translate',
-    'transformOrigin',
-    'rotate',
-    'skew',
-    'scale'
-  ],
-  variants: {
-    margin: ['responsive', 'last', 'first', 'odd', 'even'],
-    padding: ['responsive', 'last', 'first', 'odd', 'even'],
-    opacity: ['responsive', 'hover', 'focus', 'group-hover'],
-    display: ['responsive', 'last', 'first', 'odd', 'even'],
-    border: ['responsive', 'last', 'first']
   },
   plugins: []
 }
