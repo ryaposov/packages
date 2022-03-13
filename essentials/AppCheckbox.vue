@@ -13,7 +13,7 @@
         size="10"
         class="app-absolute app-top-1/2 app-left-1/2
           app-transition app-duration-200 app-ease-in-out
-          app-transform app--translate-x-1/2 app--translate-y-1/2"
+          app--translate-x-1/2 app--translate-y-1/2"
       />
       <input
         class="app-cursor-pointer app-absolute app-w-full app-h-full

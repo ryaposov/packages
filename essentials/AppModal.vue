@@ -27,7 +27,7 @@
             <button
               v-if="closeButton"
               class="app-sticky app-top-0 app-block app-text-text-300 app-ml-auto app-p-20 app-color-bg-transparent
-                  app-transition app-duration-300 app-ease-in-out app-transform
+                  app-transition app-duration-300 app-ease-in-out
                   md:hover:app-scale-125 hover:app-text-text-400 md:app-p-28"
               @click="close"
             >
@@ -136,7 +136,6 @@
             ],
             false: [
               'app-opacity-0',
-              'app-transform',
               'app-translate-y-40',
               'app-delay-0',
               'app-ease-in-out'

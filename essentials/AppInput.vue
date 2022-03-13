@@ -187,8 +187,7 @@
       },
       iconClasses () {
         return this.tag === 'select' ? [
-          'app-absolute', 'app-top-1/2', 'app-right-12',
-          'app-transform', 'app--translate-y-1/2'
+          'app-absolute', 'app-top-1/2', 'app-right-12', 'app--translate-y-1/2'
         ] : []
       },
       cleanName () {
