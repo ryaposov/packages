@@ -5,8 +5,6 @@
 ** Default: https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
 */
 
-const plugin = require('tailwindcss/plugin')
-
 const spacing = {
   initial: 'initial',
   auto: 'auto',
