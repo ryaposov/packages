@@ -129,6 +129,7 @@ module.exports = {
     },
     fontSize: {
       48: '48px',
+      44: '44px',
       36: '36px',
       32: '32px',
       28: '28px',
@@ -140,6 +141,9 @@ module.exports = {
       12: '12px'
     },
     lineHeight: {
+      125: '125%',
+      140: '140%',
+
       60: '60px',
       56: '56px',
       52: '52px',
