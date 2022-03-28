@@ -11,7 +11,7 @@
             app-overflow-x-auto app-overflow-y-auto"
       >
         <div
-          class="app-fixed app-w-full app-top-0 app-left-0 app-h-full app-color-bg-opposite
+          class="app-fixed app-w-full app-top-0 app-left-0 app-h-full app-bg-bg-opposite dark:app-bg-dbg-opposite
               app-transition-opacity app-duration-300 app-ease-in-out app-will-change"
           :class="darkenerClasses"
           @click="close"
@@ -21,12 +21,12 @@
           class="app-h-full"
         >
           <div
-            class="app-relative app-mx-auto app-color-bg-1 app-transition app-duration-300 app-will-change app-rounded-4"
+            class="app-relative app-mx-auto app-bg-bg-1 dark:app-bg-dbg-1 app-transition app-duration-300 app-will-change app-rounded-4"
             :class="contentClasses"
           >
             <button
               v-if="closeButton"
-              class="app-sticky app-top-0 app-block app-text-text-300 app-ml-auto app-p-20 app-color-bg-transparent
+              class="app-sticky app-top-0 app-block app-text-text-300 app-ml-auto app-p-20 app-bg-dbg-transparent dark:app-bg-dbg-transparent
                   app-transition app-duration-300 app-ease-in-out
                   md:hover:app-scale-125 hover:app-text-text-400 md:app-p-28"
               @click="close"
@@ -170,9 +170,9 @@
       registerPopStateListeners () {
         // Register new onpopstate handler
         if (!window.onpopstateHandlers) window.onpopstateHandlers = {}
-    
+
         window.onpopstateHandlers[this.anchor] = this.onPopState
-    
+
         if (!window.onpopstate) {
           // Fire all registered handlers on popstate
           window.onpopstate = $e => {
@@ -212,7 +212,7 @@
 
               setTimeout(() => {
                 this.state = 'opened'
-                
+
                 resolve()
               }, COMPLETE_ANIMATION_DURATION)
             }
@@ -222,7 +222,7 @@
       close () {
         return new Promise((resolve, reject) => {
           clearAllBodyScrollLocks()
-          
+
           const scrollTopPosition = window.scrollY
           this.displayed = false
           this.state = 'closing'
@@ -232,7 +232,7 @@
               window.location.hash = ''
               document.querySelector('html').scrollTop = scrollTopPosition
             }
-            
+
             this.mounted = false
             this.state = this.mounted ? 'opened' : 'closed'
 

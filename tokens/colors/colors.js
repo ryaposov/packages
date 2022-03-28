@@ -9,6 +9,7 @@ const colors = {
     4: '#C9C9C9',
     brand: '#0078FF',
     opposite: '#FFFFFF',
+    transparent: 'rgba(255, 255, 255, 0)',
   },
   dtext: {
     1: '#FFFFFF',
@@ -17,6 +18,7 @@ const colors = {
     4: '#4D4D4D',
     brand: '#1E88FF',
     opposite: '#000000',
+    transparent: 'rgba(0, 0, 0, 0)',
   },
   bg: {
     1: '#FFFFFF',
@@ -25,6 +27,7 @@ const colors = {
     3: '#C9C9C9',
     brand: '#0078FF',
     opposite: '#000000',
+    transparent: 'rgba(255, 255, 255, 0)',
   },
   dbg: {
     1: '#151515',
@@ -33,6 +36,7 @@ const colors = {
     3: '#515151',
     brand: '#1E88FF',
     opposite: '#FFFFFF',
+    transparent: 'rgba(0, 0, 0, 0)',
   },
   border: {
     1: '#F0F0F0',
@@ -41,6 +45,7 @@ const colors = {
     4: '#8D8D8D',
     brand: '#0078FF',
     opposite: '#000000',
+    transparent: 'rgba(255, 255, 255, 0)',
   },
   dborder: {
     1: '#202020',
@@ -49,6 +54,7 @@ const colors = {
     4: '#373737',
     brand: '#1E88FF',
     opposite: '#FFFFFF',
+    transparent: 'rgba(0, 0, 0, 0)',
   }
 }
 

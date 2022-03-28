@@ -132,11 +132,11 @@
       },
       componentClasses () {
         return [
-          'app-border', 'app-color-border-2', 'app-rounded-4', 'app-appearance-none',
-          'app-text-14', 'app-leading-16', !this.transparent ? 'app-color-bg-1' : 'app-color-bg-transparent',
-          'app-color-text-1', 'app-outline-none', 'app-transition-colors',
-          'app-duration-150', 'app-ease-in-out', 'hover:app-color-border-4',
-          'focus:app-color-border-brand', 'focus:app-shadow-input', 'focus:app-shadow',
+          'app-border', 'app-border-border-2', 'dark:app-border-dborder-2', 'app-rounded-4', 'app-appearance-none',
+          'app-text-14', 'app-leading-16', ...!this.transparent ? ['app-bg-bg-1', 'dark:app-bg-dbg-1'] : ['app-bg-bg-transparent', 'dark:app-bg-dbg-transparent'],
+          'app-text-text-1', 'dark:q-text-dtext-1', 'app-outline-none', 'app-transition-colors',
+          'app-duration-150', 'app-ease-in-out', 'hover:app-border-border-4', 'dark:hover:app-border-dborder-4',
+          'focus:app-border-border-brand', 'dark:focus:app-border-dborder-brand', 'focus:app-shadow-input', 'focus:app-shadow',
           ...{
             sm: ['app-h-28', 'app-px-12'],
             md: ['app-h-36', 'app-px-16']
