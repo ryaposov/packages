@@ -5,6 +5,8 @@
 ** Default: https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
 */
 
+const tailwindFormattedColors = require('@ryaposov/tokens/colors/tailwind-color-config.js')
+
 const spacing = {
   initial: 'initial',
   auto: 'auto',
@@ -104,7 +106,7 @@ module.exports = {
       md: '880px',
       dark: { raw: '(prefers-color-scheme: dark)' },
     },
-    colors: {},
+    colors: tailwindFormattedColors,
     inset: {
       '1/4': '25%',
       '1/2': '50%',
@@ -183,6 +185,7 @@ module.exports = {
       12: '12px',
       16: '16px',
       32: '32px',
+      40: '40px',
       full: '100%'
     },
     extend: {

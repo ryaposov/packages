@@ -52,7 +52,7 @@ export default (
       validator: arrayPropValidator(allowedLeading)
     },
     color: {
-      type: [String, Number, Array],
+      type: [String, Number, Array, Boolean],
       default: 1,
       validator: arrayPropValidator(allowedColors)
     },
@@ -81,21 +81,22 @@ export default (
           inline: ['app-inline']
         }[this.$responsiveProp('display')],
         ...{
-          1: ['app-color-text-1'],
-          2: ['app-color-text-2'],
-          3: ['app-color-text-3'],
-          4: ['app-color-text-4'],
-          brand: ['app-color-text-brand'],
-          opposite: ['app-color-text-opposite']
+          false: [],
+          1: ['app-text-text-1', 'dark:app-text-dtext-1'],
+          2: ['app-text-text-2', 'dark:app-text-dtext-2'],
+          3: ['app-text-text-3', 'dark:app-text-dtext-3'],
+          4: ['app-text-text-4', 'dark:app-text-dtext-4'],
+          brand: ['app-text-text-brand', 'dark:app-text-dtext-brand'],
+          opposite: ['app-text-text-opposite', 'dark:app-text-dtext-opposite']
         }[this.$responsiveProp('color')],
         ...{
           false: [],
-          1: ['hover:app-color-text-1'],
-          2: ['hover:app-color-text-2'],
-          3: ['hover:app-color-text-3'],
-          4: ['hover:app-color-text-4'],
-          brand: ['hover:app-color-text-brand'],
-          opposite: ['hover:app-color-text-opposite']
+          1: ['hover:app-text-text-1', 'dark:hover:app-text-dtext-1'],
+          2: ['hover:app-text-text-2', 'dark:hover:app-text-dtext-2'],
+          3: ['hover:app-text-text-3', 'dark:hover:app-text-dtext-3'],
+          4: ['hover:app-text-text-4', 'dark:hover:app-text-dtext-4'],
+          brand: ['hover:app-text-text-brand', 'dark:hover:app-text-dtext-brand'],
+          opposite: ['hover:app-text-text-opposite', 'dark:hover:app-text-dtext-opposite']
         }[this.$responsiveProp('hoverColor')],
       ]
     }
