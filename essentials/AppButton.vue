@@ -55,7 +55,7 @@ const allowedWeights = ['extrabold', 'bold', 'semibold', 'medium', 'regular']
 const allowedDensity = ['tight', 'normal', 'spaced', 'relaxed']
 const allowedSizes = arrayIntToStrings(48, 36, 32, 24, 28, 20, 18, 16, 14)
 const allowedColors = arrayIntToStrings(1, 2, 3, 4, 'brand', 'opposite', false)
-const allowedBg = arrayIntToStrings(1, 2, 25, 3, 'brand', 'opposite', false)
+const allowedBg = arrayIntToStrings(1, 2, 25, 3, 'brand', 'opposite', 'transparent', false)
 const allowedBorder = arrayIntToStrings(1, 2, 3, 4, 'opposite', 'brand', false)
 const allowedRounded = arrayIntToStrings(0, 2, 3, 4, 8, 16, 24, 32, 40, 48, 56, 'full')
 
@@ -159,12 +159,14 @@ export default {
       return [
         ...this.radiusClasses,
         ...{
+          false: [],
           1: ['app-bg-bg-1', 'dark:app-bg-dbg-1'],
           2: ['app-bg-bg-2', 'dark:app-bg-dbg-2'],
           25: ['app-bg-bg-25', 'dark:app-bg-dbg-25'],
           3: ['app-bg-bg-3', 'dark:app-bg-dbg-3'],
           brand: ['app-bg-bg-brand', 'dark:app-bg-dbg-brand'],
           opposite: ['app-bg-bg-opposite', 'dark:app-bg-dbg-opposite'],
+          transparent: ['app-bg-bg-transparent', 'dark:app-bg-dbg-transparent'],
         }[this.responsiveProp('bg')],
         ...{
           true: [
@@ -181,12 +183,14 @@ export default {
               20: ['app-px-20', 'app-py-4'],
             }[this.responsiveProp('size')],
             ...{
+              false: [],
               1: ['app-bg-bg-1', 'dark:app-bg-dbg-1'],
               2: ['app-bg-bg-2', 'dark:app-bg-dbg-2'],
               25: ['app-bg-bg-25', 'dark:app-bg-dbg-25'],
               3: ['app-bg-bg-3', 'dark:app-bg-dbg-3'],
               brand: ['app-bg-bg-brand', 'dark:app-bg-dbg-brand'],
-              opposite: ['app-bg-bg-opposite', 'dark:app-bg-dbg-opposite']
+              opposite: ['app-bg-bg-opposite', 'dark:app-bg-dbg-opposite'],
+              transparent: ['app-bg-bg-transparent', 'dark:app-bg-dbg-transparent'],
             }[this.bg]
           ],
           false: []
