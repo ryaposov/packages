@@ -24,7 +24,7 @@
       <AppBorder
         v-if="type === 'underlined'"
         :class="underlineClasses"
-        class="app-absolute app--bottom-4 app-left-0 app-w-full app-opacity-20"
+        class="app-absolute app--bottom-2 app-left-0 app-w-full app-opacity-20"
       />
     </component>
     <AppIcon
