@@ -134,7 +134,7 @@
         return [
           'app-border', 'app-border-border-2', 'dark:app-border-dborder-2', 'app-rounded-4', 'app-appearance-none',
           'app-text-14', 'app-leading-16', ...!this.transparent ? ['app-bg-bg-1', 'dark:app-bg-dbg-1'] : ['app-bg-bg-transparent', 'dark:app-bg-dbg-transparent'],
-          'app-text-text-1', 'dark:q-text-dtext-1', 'app-outline-none', 'app-transition-colors',
+          'app-text-text-1', 'dark:app-text-dtext-1', 'app-outline-none', 'app-transition-colors',
           'app-duration-150', 'app-ease-in-out', 'hover:app-border-border-4', 'dark:hover:app-border-dborder-4',
           'focus:app-border-border-brand', 'dark:focus:app-border-dborder-brand', 'focus:app-shadow-input', 'focus:app-shadow',
           ...{

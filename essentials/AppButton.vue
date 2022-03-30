@@ -8,7 +8,7 @@
     type="inline"
     align="center"
     class="app-relative app-cursor-pointer app-select-none app-group focus:app-outline-none
-      app-transition app-duration-150 app-ease-in-out hover:app-opacity-50"
+      app-transition app-duration-150 app-ease-in-out hover:app-opacity-50 app-no-underline"
   >
     <component
       :is="textTag"
@@ -168,12 +168,18 @@ export default {
         }[this.responsiveProp('bg')],
         ...{
           true: [
+            // ...{
+            //   tight: [],
+            //   normal: ['app-px-12', 'app-py-4'],
+            //   spaced: ['app-px-20', 'app-py-8'],
+            //   relaxed: ['app-px-20', 'app-py-12'],
+            // }[this.responsiveProp('size')],
             ...{
-              tight: [],
-              normal: ['app-px-12', 'app-py-4'],
-              spaced: ['app-px-20', 'app-py-8'],
-              relaxed: ['app-px-20', 'app-py-12'],
-            }[this.density],
+              14: ['app-px-12', 'app-py-4'],
+              16: ['app-px-14', 'app-py-4'],
+              18: ['app-px-16', 'app-py-4'],
+              20: ['app-px-20', 'app-py-4'],
+            }[this.responsiveProp('size')],
             ...{
               1: ['app-bg-bg-1', 'dark:app-bg-dbg-1'],
               2: ['app-bg-bg-2', 'dark:app-bg-dbg-2'],

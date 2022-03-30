@@ -3,6 +3,7 @@
     :is="$responsiveProp('tag')"
     :class="rootClasses"
     :data-name="$NAME"
+    class="app-tracking-tight"
     v-bind="$rootProps"
   >
     <span

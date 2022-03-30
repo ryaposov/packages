@@ -16,7 +16,9 @@ const spacing = {
   2: '2px',
   3: '3px',
   4: '4px',
+  6: '6px',
   8: '8px',
+  10: '10px',
   12: '12px',
   16: '16px',
   20: '20px',
@@ -193,6 +195,9 @@ module.exports = {
       full: '100%'
     },
     extend: {
+      letterSpacing: {
+        tight: '-0.02em'
+      },
       opacity: {
         '10': '.1',
         '20': '.2',
@@ -218,5 +223,7 @@ module.exports = {
       }
     }
   },
-  plugins: []
+  plugins: [
+    require('@tailwindcss/line-clamp')
+  ]
 }
