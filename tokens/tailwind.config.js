@@ -76,14 +76,18 @@ const spacing = {
   340: '340px',
   360: '360px',
   400: '400px',
+  480: '480px',
+  500: '500px',
   520: '520px',
   600: '600px',
   680: '680px',
+  720: '720px',
   700: '700px',
   760: '760px',
   800: '800px',
   840: '840px',
   880: '880px',
+  912: '912px',
   940: '940px',
   1000: '1000px',
   1200: '1200px',
@@ -109,6 +113,7 @@ module.exports = {
     screens: {
       xs: '360px',
       sm: '414px',
+      rp: '580px',
       md: '880px',
       dark: { raw: '(prefers-color-scheme: dark)' },
     },
@@ -136,6 +141,7 @@ module.exports = {
     fontSize: {
       48: '48px',
       44: '44px',
+      40: '40px',
       36: '36px',
       32: '32px',
       28: '28px',
@@ -199,6 +205,9 @@ module.exports = {
       full: '100%'
     },
     extend: {
+      gridTemplateColumns: {
+        auto: 'repeat(auto-fill, minmax(0, 1fr))',
+      },
       letterSpacing: {
         tight: '-0.02em'
       },
