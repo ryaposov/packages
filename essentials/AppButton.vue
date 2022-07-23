@@ -8,7 +8,7 @@
     type="inline"
     align="center"
     class="app-relative app-cursor-pointer app-select-none app-group focus:app-outline-none
-      app-transition app-duration-150 app-ease-in-out hover:app-opacity-50"
+      app-transition app-duration-150 app-ease-in-out hover:app-opacity-50 app-no-underline"
   >
     <component
       :is="textTag"
@@ -24,7 +24,7 @@
       <AppBorder
         v-if="type === 'underlined'"
         :class="underlineClasses"
-        class="app-absolute app--bottom-4 app-left-0 app-w-full app-opacity-20"
+        class="app-absolute app--bottom-2 app-left-0 app-w-full app-opacity-20"
       />
     </component>
     <AppIcon
@@ -55,7 +55,7 @@ const allowedWeights = ['extrabold', 'bold', 'semibold', 'medium', 'regular']
 const allowedDensity = ['tight', 'normal', 'spaced', 'relaxed']
 const allowedSizes = arrayIntToStrings(48, 36, 32, 24, 28, 20, 18, 16, 14)
 const allowedColors = arrayIntToStrings(1, 2, 3, 4, 'brand', 'opposite', false)
-const allowedBg = arrayIntToStrings(1, 2, 25, 3, 'brand', 'opposite', false)
+const allowedBg = arrayIntToStrings(1, 2, 25, 3, 'brand', 'opposite', 'transparent', false)
 const allowedBorder = arrayIntToStrings(1, 2, 3, 4, 'opposite', 'brand', false)
 const allowedRounded = arrayIntToStrings(0, 2, 3, 4, 8, 16, 24, 32, 40, 48, 56, 'full')
 
@@ -159,28 +159,38 @@ export default {
       return [
         ...this.radiusClasses,
         ...{
-          1: ['app-color-bg-1'],
-          2: ['app-color-bg-2'],
-          25: ['app-color-bg-25'],
-          3: ['app-color-bg-3'],
-          brand: ['app-color-bg-brand'],
-          opposite: ['app-color-bg-opposite'],
+          false: [],
+          1: ['app-bg-bg-1', 'dark:app-bg-dbg-1'],
+          2: ['app-bg-bg-2', 'dark:app-bg-dbg-2'],
+          25: ['app-bg-bg-25', 'dark:app-bg-dbg-25'],
+          3: ['app-bg-bg-3', 'dark:app-bg-dbg-3'],
+          brand: ['app-bg-bg-brand', 'dark:app-bg-dbg-brand'],
+          opposite: ['app-bg-bg-opposite', 'dark:app-bg-dbg-opposite'],
+          transparent: ['app-bg-bg-transparent', 'dark:app-bg-dbg-transparent'],
         }[this.responsiveProp('bg')],
         ...{
           true: [
+            // ...{
+            //   tight: [],
+            //   normal: ['app-px-12', 'app-py-4'],
+            //   spaced: ['app-px-20', 'app-py-8'],
+            //   relaxed: ['app-px-20', 'app-py-12'],
+            // }[this.responsiveProp('size')],
             ...{
-              tight: [],
-              normal: ['app-px-12', 'app-py-4'],
-              spaced: ['app-px-20', 'app-py-8'],
-              relaxed: ['app-px-20', 'app-py-12'],
-            }[this.density],
+              14: ['app-px-12', 'app-py-4'],
+              16: ['app-px-14', 'app-py-4'],
+              18: ['app-px-16', 'app-py-4'],
+              20: ['app-px-20', 'app-py-4'],
+            }[this.responsiveProp('size')],
             ...{
-              1: ['app-color-bg-1'],
-              2: ['app-color-bg-2'],
-              25: ['app-color-bg-25'],
-              3: ['app-color-bg-3'],
-              brand: ['app-color-bg-brand'],
-              opposite: ['app-color-bg-opposite']
+              false: [],
+              1: ['app-bg-bg-1', 'dark:app-bg-dbg-1'],
+              2: ['app-bg-bg-2', 'dark:app-bg-dbg-2'],
+              25: ['app-bg-bg-25', 'dark:app-bg-dbg-25'],
+              3: ['app-bg-bg-3', 'dark:app-bg-dbg-3'],
+              brand: ['app-bg-bg-brand', 'dark:app-bg-dbg-brand'],
+              opposite: ['app-bg-bg-opposite', 'dark:app-bg-dbg-opposite'],
+              transparent: ['app-bg-bg-transparent', 'dark:app-bg-dbg-transparent'],
             }[this.bg]
           ],
           false: []
@@ -191,13 +201,13 @@ export default {
       return [
         ...this.radiusClasses,
         ...{
-          1: ['app-color-border-1'],
-          2: ['app-color-border-2'],
-          3: ['app-color-border-3'],
-          4: ['app-color-border-4'],
-          brand: ['app-color-border-brand'],
-          opposite: ['app-color-border-opposite'],
-          false: ['app-color-border-transparent'],
+          1: ['app-border-border-1', 'dark:app-border-dborder-1'],
+          2: ['app-border-border-2', 'dark:app-border-dborder-2'],
+          3: ['app-border-border-3', 'dark:app-border-dborder-3'],
+          4: ['app-border-border-4', 'dark:app-border-dborder-4'],
+          brand: ['app-border-border-brand', 'dark:app-border-dborder-brand'],
+          opposite: ['app-border-border-opposite', 'dark:app-border-dborder-opposite'],
+          false: ['app-border-border-transparent', 'dark:app-border-dborder-transparent'],
         }[this.responsiveProp('border')],
       ]
     },
@@ -233,11 +243,11 @@ export default {
     underlineClasses () {
       return [
         ...{
-          1: ['app-color-border-1'],
-          2: ['app-color-border-2'],
-          3: ['app-color-border-3'],
-          opposite: ['app-color-border-opposite'],
-          brand: ['app-color-border-brand'],
+          1: ['app-border-border-1', 'dark:app-border-dborder-1'],
+          2: ['app-border-border-2', 'dark:app-border-dborder-2'],
+          3: ['app-border-border-3', 'dark:app-border-dborder-3'],
+          opposite: ['app-border-border-opposite', 'dark:app-border-dborder-opposite'],
+          brand: ['app-border-border-brand', 'dark:app-border-dborder-brand'],
           false: []
         }[this.responsiveProp('underline')],
         ...{

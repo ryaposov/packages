@@ -5,6 +5,8 @@
 ** Default: https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
 */
 
+const tailwindFormattedColors = require('@ryaposov/tokens/colors/tailwind-color-config.js')
+
 const spacing = {
   initial: 'initial',
   auto: 'auto',
@@ -14,8 +16,11 @@ const spacing = {
   2: '2px',
   3: '3px',
   4: '4px',
+  6: '6px',
   8: '8px',
+  10: '10px',
   12: '12px',
+  14: '14px',
   16: '16px',
   20: '20px',
   24: '24px',
@@ -29,6 +34,7 @@ const spacing = {
   56: '56px',
   60: '60px',
   64: '64px',
+  66: '66px',
   68: '68px',
   72: '72px',
   76: '76px',
@@ -70,16 +76,23 @@ const spacing = {
   340: '340px',
   360: '360px',
   400: '400px',
+  480: '480px',
+  500: '500px',
   520: '520px',
   600: '600px',
+  680: '680px',
+  720: '720px',
   700: '700px',
+  752: '752px',
   760: '760px',
   800: '800px',
   840: '840px',
   880: '880px',
+  912: '912px',
   940: '940px',
   1000: '1000px',
   1200: '1200px',
+  1520: '1520px',
 }
 
 const vh = {
@@ -101,10 +114,11 @@ module.exports = {
     screens: {
       xs: '360px',
       sm: '414px',
+      rp: '580px',
       md: '880px',
       dark: { raw: '(prefers-color-scheme: dark)' },
     },
-    colors: {},
+    colors: tailwindFormattedColors,
     inset: {
       '1/4': '25%',
       '1/2': '50%',
@@ -127,6 +141,8 @@ module.exports = {
     },
     fontSize: {
       48: '48px',
+      44: '44px',
+      40: '40px',
       36: '36px',
       32: '32px',
       28: '28px',
@@ -138,6 +154,9 @@ module.exports = {
       12: '12px'
     },
     lineHeight: {
+      125: '125%',
+      140: '140%',
+
       60: '60px',
       56: '56px',
       52: '52px',
@@ -176,15 +195,23 @@ module.exports = {
       '1/2': '50%'
     },
     borderRadius: {
-      '2': '2px',
-      '3': '3px',
-      '4': '4px',
-      '8': '8px',
-      '16': '16px',
-      '32': '32px',
+      2: '2px',
+      3: '3px',
+      4: '4px',
+      8: '8px',
+      12: '12px',
+      16: '16px',
+      32: '32px',
+      40: '40px',
       full: '100%'
     },
     extend: {
+      gridTemplateColumns: {
+        auto: 'repeat(auto-fill, minmax(0, 1fr))',
+      },
+      letterSpacing: {
+        tight: '-0.02em'
+      },
       opacity: {
         '10': '.1',
         '20': '.2',
@@ -210,5 +237,7 @@ module.exports = {
       }
     }
   },
-  plugins: []
+  plugins: [
+    require('@tailwindcss/line-clamp')
+  ]
 }

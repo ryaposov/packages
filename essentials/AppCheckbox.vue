@@ -17,9 +17,10 @@
       />
       <input
         class="app-cursor-pointer app-absolute app-w-full app-h-full
-          app-appearance-none app-border app-color-border-2 app-rounded-2 
+          app-appearance-none app-border app-border-border-2 dark:app-border-dborder-2 app-rounded-2
           app-transition-colors app-duration-150 app-ease-in-out app-outline-none
-          focus:app-color-border-brand group-hover:app-color-border-4 focus:app-shadow-input focus:app-shadow"
+          focus:app-border-border-brand dark:focus:app-border-dborder-brand group-hover:app-border-border-4
+          focus:app-shadow-input"
         v-bind="inputProps"
         @change="change"
       >
@@ -99,7 +100,7 @@
     computed: {
       rootClasses () {
         return {
-          
+
         }
       },
       iconClasses () {
